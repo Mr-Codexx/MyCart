@@ -1,0 +1,77 @@
+.header {
+    padding: 0px 5.5%;
+
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav .nav-link {
+    margin-right: 15px;
+  }
+  .position-absolute{
+    width: 38%;
+  }
+  .UserIcon{
+    margin: 0 10px;
+  }
+  .count{
+    margin-right: 20px !important;
+  }
+  .position-relative {
+    position: relative;
+    margin-right: 20px;
+  }
+  
+  .badge {
+    right: -10px;
+    top: -10px;
+  }
+
+/* Style for active link with a bottom border */
+.navbar-nav .nav-item .nav-link.active,
+.navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 2px solid #007bff; /* Change color as needed */
+}
+
+/* Search container */
+.search-container {
+  position: relative;
+}
+
+/* Search box container */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa; /* Light background for visibility */
+  border-radius: 20px;
+  transition: width 0.3s ease;
+  width: 40px; /* Initial width */
+  overflow: hidden;
+}
+
+/* Search icon styling */
+.search-icon {
+  margin: 0 10px;
+  color: #6c757d; /* Icon color */
+  z-index: 200;
+}
+
+/* Search input field styling */
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* Expand the search box and input field on hover */
+.search-box:hover {
+  width: 200px; /* Expanded width */
+}
+
+.search-box:hover .search-input {
+  width: 100%;
+}
