@@ -1,13 +1,15 @@
-// Cart.js
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 import { GoPlus, GoDash } from "react-icons/go";
 import { MdCancel } from "react-icons/md";
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import EmptyCard from "./EmptyCard";
+import Checkout from "./Checkout/Checkout";
 
-function Cart({ cartItems, setCartItems }) {
+function Cart({ cartItems, setCartItems, total  }) {
+  const [showModal, setShowModal] = useState(false);
+
   const handleQuantityChange = (id, newQuantity) => {
     setCartItems(
       cartItems.map((item) =>
@@ -21,7 +23,7 @@ function Cart({ cartItems, setCartItems }) {
   };
 
   const handleCheckout = () => {
-    alert("Checkout not implemented");
+    setShowModal(true);
   };
 
   const increaseQuantity = (id) => {
@@ -46,7 +48,7 @@ function Cart({ cartItems, setCartItems }) {
   return (
     <div className="cart-container">
       {cartItems.length === 0 ? (
-        <EmptyCard/>
+        <EmptyCard />
       ) : (
         <div className="container">
           <div className="row">
@@ -195,7 +197,10 @@ function Cart({ cartItems, setCartItems }) {
                       <button
                         onClick={handleCheckout}
                         className="btn btn-block btn-dark"
+                        data-bs-toggle="modal"
+                        data-bs-target="#checkoutModal"
                       >
+                        <Link to={{ pathname: '/checkout', state: { cartItems, total } }}></Link>
                         Proceed to Checkout <RiArrowRightDoubleFill />
                       </button>
                     </div>
@@ -206,6 +211,55 @@ function Cart({ cartItems, setCartItems }) {
           </div>
         </div>
       )}
+
+      {/* Bootstrap Modal */}
+      <div
+        className="modal fade"
+        id="checkoutModal"
+        tabIndex="-1"
+        aria-labelledby="checkoutModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-fullscreen">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="checkoutModalLabel">
+                Checkout
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6">
+                    <Checkout />
+                  </div>
+                  <div className="col-md-6">
+                    {/* Add additional content or summary here */}
+                    <h4>Order Summary</h4>
+                    <p>Total: ₹{subtotal.toFixed(2)}</p>
+                    {/* Add more details as needed */}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Cancel Payment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
