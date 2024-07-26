@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2'; // Make sure to import SweetAlert
 import './ShoppingCart.css';
 
 function ShoppingCart({ cartItems, setCartItems }) {
@@ -46,6 +47,23 @@ function ShoppingCart({ cartItems, setCartItems }) {
       } else {
         return [...prevItems, { ...product, quantity: 1 }];
       }
+    });
+  };
+
+  const handleBuyNow = (product) => {
+    console.log('Product data:', product); // Debugging line
+    addToCart(product);
+    console.log(product.title);
+
+    // Show toast notification
+    Swal.fire({
+      title: `${product.title} added to cart`,
+      icon: 'success',
+      toast: true,
+      position: 'bottom-start',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
     });
   };
 
@@ -144,7 +162,7 @@ function ShoppingCart({ cartItems, setCartItems }) {
                             </p>
                             <button
                               className="btn btn-primary"
-                              onClick={() => addToCart(product)}
+                              onClick={() => handleBuyNow(product)}
                             >
                               Add to Cart
                             </button>
@@ -163,4 +181,4 @@ function ShoppingCart({ cartItems, setCartItems }) {
   );
 }
 
-export default ShoppingCart
+export default ShoppingCart;

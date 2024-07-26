@@ -75,3 +75,34 @@
 .search-box:hover .search-input {
   width: 100%;
 }
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+}
+
+/* UserIcon styling */
+.UserIcon {
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.btn-outline-primary {
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+
+  .UserIcon {
+    margin-right: 0.5rem;
+  }
+}

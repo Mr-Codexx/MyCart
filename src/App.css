@@ -81,3 +81,9 @@
     transform: rotate(360deg);
   }
 }
+.navbar-nav .nav-link {
+  text-decoration: none;
+}
+a {
+  text-decoration: none; /* Removes underline from all links */
+}

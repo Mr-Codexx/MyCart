@@ -1,17 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { FaRegUserCircle } from "react-icons/fa";
-import { FaCartArrowDown, FaSearch } from "react-icons/fa";
+import { FaRegUserCircle, FaCartArrowDown } from 'react-icons/fa';
+import Profile from './Auth/Profile';
 
-function Header({ cartCount, userName, searchQuery, setSearchQuery }) {
+function Header({ cartCount, userName, searchQuery, setSearchQuery, isAuthenticated }) {
+  const [showProfile, setShowProfile] = useState(false);
+
+  const handleProfileClick = () => {
+    setShowProfile(true);
+  };
+
+  const handleCloseProfile = () => {
+    setShowProfile(false);
+  };
+
+  useEffect(() => {
+    // Initialize Bootstrap tooltips
+    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map((tooltipTriggerEl) => new window.bootstrap.Tooltip(tooltipTriggerEl));
+  }, []);
+
   return (
     <header className="header">
-      <nav className="navbar navbar-expand-lg py-4">
-        <Link className="navbar-brand" to="/">MyStore</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
+        <Link className="navbar-brand" to="/">𝐌𝐫𝐂𝐨𝐝𝐞𝐱𝐱 </Link>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -32,9 +57,8 @@ function Header({ cartCount, userName, searchQuery, setSearchQuery }) {
             data-bs-toggle="tooltip"
             data-bs-placement="top"
             title={`Welcome, ${userName}`}
+            onClick={handleProfileClick}
           />
-
-          {/* <span className="m-1">Welcome, {userName}</span> */}
           <Link to="/cart" className="btn btn-outline-primary position-relative">
             <FaCartArrowDown />
             {cartCount > 0 && (
@@ -46,6 +70,9 @@ function Header({ cartCount, userName, searchQuery, setSearchQuery }) {
           </Link>
         </div>
       </nav>
+      {showProfile && (
+        <Profile userName={userName} onClose={handleCloseProfile} isAuthenticated={isAuthenticated} />
+      )}
     </header>
   );
 }

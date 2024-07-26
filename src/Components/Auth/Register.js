@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 
-
-const LoginPage = ({ onLogin }) => {
+const RegisterPage = ({ onRegister }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You would typically handle form submission here
-    // For example: call an API to authenticate the user
-    onLogin(); // Call the onLogin function to update the authentication state
-    
+    if (password === confirmPassword) {
+      if (onRegister) {
+        onRegister(); // Ensure onRegister is a function before calling it
+        console.log('sucess');
+      }
+    } else {
+      alert('Passwords do not match');
+    }
   };
 
   return (
@@ -19,7 +23,7 @@ const LoginPage = ({ onLogin }) => {
         <div className="col-md-6">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title mb-4">Login</h5>
+              <h5 className="card-title mb-4">Register</h5>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email address</label>
@@ -43,9 +47,20 @@ const LoginPage = ({ onLogin }) => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <div className="mb-3">
+                  <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">Register</button>
                 <div className="mt-3">
-                  <a href="/register">Don't have an account? Register</a>
+                  <a href="/login">Already have an account? Login</a>
                 </div>
               </form>
             </div>
@@ -56,4 +71,4 @@ const LoginPage = ({ onLogin }) => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
