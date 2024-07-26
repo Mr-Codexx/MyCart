@@ -14,7 +14,7 @@ function About() {
       <div className="row justify-content-center mt-4">
         <div className="col-md-8">
           <h3 className="text-center mb-3">Our Location</h3>
-          <div className="ratio ratio-16x9">
+          <div className="ratio ratio-20x9">
             <iframe
               src="https://www.google.com/maps?q=Hyderabad,India&output=embed"
               frameBorder="0"

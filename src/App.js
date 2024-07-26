@@ -22,6 +22,7 @@ import Profile from './Components/Auth/Profile';
 import LoginPage from './Components/Auth/Login';
 import RegisterPage from './Components/Auth/Register';
 import Test from './Components/TEST'
+import Footer from './Components/Footer/Footer';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -82,6 +83,7 @@ function App() {
             <Route path='test' element={<Test/>}/>
           </Routes>
         </div>
+        <Footer/>
       </CartProvider>
     </>
   );

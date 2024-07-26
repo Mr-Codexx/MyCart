@@ -86,7 +86,7 @@ const Home = ({ cartItems, setCartItems }) => {
                                             This is the best TV in the world for people who just want to waste time in front of TV.
                                             We've recommended screens of at least 65 inches (though other sizes are available), and that feature refresh rates of 60Hz and 120Hz so that they can accommodate the motion of fast-paced games.
                                         </p>
-                                        <h1 className="price fw-semibold">{formatCurrency(1200)}</h1>
+                                        <h1 className="price fw-semibold">{formatCurrency(21999)}</h1>
                                         <button type="button" className="btn-buy-now-banner" onClick={() => handleBuyNow({ id: 1, title: 'Mega LCD TV For Sports', price: 1200, image: '/images/banner-images/tv.png' })}>
                                             Buy Now <i className="fa-solid fa-arrow-right"></i>
                                         </button>
@@ -216,11 +216,6 @@ const Home = ({ cartItems, setCartItems }) => {
                     </div>
                 </section>
             </main>
-
-            {/* Footer */}
-            <footer className="mb-0 pb-0 mt-3 text-center">
-                <small>©2023. Panda Commerce. All rights reserved.</small>
-            </footer>
         </div>
     );
 };
