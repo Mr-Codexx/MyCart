@@ -33,7 +33,7 @@ MyCart is a single-page application built using ReactJS. It leverages modern e-c
 - **Frontend:** ReactJS
 - **Backend:** E-commerce APIs
 - **Payment Gateway:** Integration with various payment providers
-- **Deployment:** GitHub Pages
+- **Deployment:** Vercel Pages
 
 ## Installation
 
@@ -101,5 +101,3 @@ For any questions or support, please contact the developer:
 - **Official Website:** [Sachin Sharma](https://sachinsharma2111.github.io/Home)
 
 ---
-
-This README provides a high-level overview of your MyCart project, highlighting its features, technologies, and usage instructions. You can adjust the content to include more specific details about your project as needed.
